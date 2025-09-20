@@ -1,7 +1,18 @@
 #include "revert_string.h"
+#include <string.h>
 
 void RevertString(char *str)
 {
-	// your code here
+    if (str == NULL) {
+        return;
+    }
+    
+    int length = strlen(str);
+    
+    for (int i = 0; i < length / 2; i++) {
+        // Меняем символы симметрично относительно центра
+        char temp = str[i];
+        str[i] = str[length - i - 1];
+        str[length - i - 1] = temp;
+    }
 }
-
