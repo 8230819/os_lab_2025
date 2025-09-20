@@ -1,0 +1,20 @@
+   68  celar
+   69  clear
+   70  ls
+   71  gcc -c main.c -o main.o
+   72  gcc -c -fPIC revert_string.c -o revert_string.o
+   73  ar rcs lib.a revert_string.o
+   74  gcc -shared -o lib.so revert_string.o
+   75  gcc main.o lib.a -o program_static
+   76  rm lib.a lib.so
+   77  ar rcs librev.a revert_string.o
+   78  gcc -shared -o librev.so revert_string.o
+   79  gcc main.o -L. -lrev -o program_dynamic
+   80  ls
+   81  ls -al
+   82  ./program_static 
+   83  ./program_static 123
+   84  ./program_dynamic 321
+   85  history 10
+   86  history 20
+   87  history 20 > 3.txt
